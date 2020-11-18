@@ -300,7 +300,7 @@ for a in arg:
     info = a.split('|')[1]
     if cle != 'message':
         info = info.split(';')
-    if len(info) == 1:
+    if len(info) == 1 and cle != 'key_words':
         config[cle] = info[0]
     else:
         config[cle] = info

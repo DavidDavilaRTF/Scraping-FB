@@ -1,0 +1,13 @@
+username : username fb (string)
+mdp : mdp fb (string)
+nb_post : le nombre de posts que tu veux scraper (int)
+is_all_com : est ce que tu veux scroller les commentaires et acceder aux réponses (1/0)
+key_words : mots clés des commentaires (mots1;mots2) dans le cas ou tu veux tout récupérer ;
+output_path : localisation du fichier (string)
+nb_scroll_action : nombre de scroll afin de récupérer les réactions des commentaires (int)
+page : lien du groupe ou de la page
+action : 3 odes :
+				com (récupére les commentaires) 
+				reaction (récupére les likes du post) 
+				message (envoie des messages aux profils d'un fichier)
+message : le message à envoyer (string)

@@ -218,6 +218,19 @@ class scrap_fb:
             except:
                 pass
             lp = self.driver.get_current_url()
+
+            is_extract = False
+            for kw in self.config['key_words']:
+                is_extract += (post.find(kw) != -1)
+            if is_extract:
+                self.profil.append(profil_post)
+                self.nom.append(nom_post)
+                self.comment.append(post)
+                self.posts.append(post)
+                self.nom_posts.append(nom_post)
+                self.profil_posts.append(profil_post)
+                self.lien_post.append(lp)
+
             bloc = self.driver.find_elements("//div[@class = '_2b04']")
             for b in bloc:
                 element_com = self.driver.find_element_in_box(b,".//*[@data-sigil = 'comment-body']")
@@ -241,17 +254,19 @@ class scrap_fb:
         df = df['profils'].unique()
         for d in df:
             self.driver.get_to_page(d)
-            time.sleep(5)
+            time.sleep(3)
             try:
                 element = self.driver.find_element("//a[contains(@href,'profile_message')]")
                 lien = self.driver.find_attribute(element,'href')
                 time.sleep(5)
                 self.driver.get_to_page(lien)
-                time.sleep(5)
+                time.sleep(3)
                 element = self.driver.find_element("//textarea")
                 self.driver.fill_form(element,text)
+                time.sleep(1)
                 element = self.driver.find_element("//button[@name = 'send']")
                 self.driver.click(element)
+                time.sleep(3)
                 del element
                 del lien
             except:
